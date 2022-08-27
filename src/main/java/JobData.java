@@ -5,10 +5,7 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -25,7 +22,7 @@ public class JobData {
      * without duplicates, for a given column.
      *
      * @param field The column to retrieve values from
-     * @return List of all of the values of the given field
+     * @return List of all values of the given field
      */
     public static ArrayList<String> findAll(String field) {
 
@@ -60,7 +57,7 @@ public class JobData {
     /**
      * Returns results of search the jobs data by key/value, using
      * inclusion of the search term.
-     *
+
      * For example, searching for employer "Enterprise" will include results
      * with "Enterprise Holdings, Inc".
      *
@@ -73,16 +70,40 @@ public class JobData {
         // load data, if not already loaded
         loadData();
 
-        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();//ArrayList with hashmap as the data
+        for(HashMap<String, String> getMap : allJobs)
+        {
+            for(Map.Entry<String,String> getKVP: getMap.entrySet())
+            {
+                if(getKVP.getKey().toLowerCase().equals(column.toLowerCase()) && getKVP.getValue().toLowerCase().
+                        contains(value.toLowerCase()))
+                {
 
-        for (HashMap<String, String> row : allJobs) {
-
-            String aValue = row.get(column);
-
-            if (aValue.contains(value)) {
-                jobs.add(row);
+                    jobs.add(getMap);
+                }
             }
         }
+//        for(int i = 0; i < jobs.size(); i++)//Search through array list
+//        {
+//            for(int j = 0; j < jobs.get(i).size(); j++)//Search through hashmap that you just grabbed.
+//            {
+
+            //}
+       // }
+//        int[] values = new int[5];
+//        //values[0]
+//        HashMap<String, String> job = new HashMap<>();
+//        job.put("","");
+//        jobs.add(job);
+//        ArrayList<Integer> valuesList = new ArrayList<>();
+//        for (HashMap<String, String> row : allJobs) {
+//
+//            String aValue = row.get(column);
+//
+//            if (aValue.contains(value)) {
+//                jobs.add(row);
+//            }
+//        }
 
         return jobs;
     }
@@ -96,10 +117,40 @@ public class JobData {
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
 
         // load data, if not already loaded
-        loadData();
+         loadData();
+        ArrayList<HashMap<String, String>> jobValue = new ArrayList<>();//ArrayList with hashmap as the data
+        for(HashMap<String, String> getMap : allJobs)
+        {
+            for(Map.Entry<String,String> values: getMap.entrySet())
+            {
+                if(values.getValue().toLowerCase().contains(value.toLowerCase()))
+                {
+
+                    jobValue.add(getMap);
+                }
+            }
+        }
+
+//        for (HashMap jobsValue : allJobs){
+//
+//        }
+//            for(HashMap<String, String> getSet:allJobs)
+//            {
+//                for(Map.Entry<String,String> entrySet:getSet.entrySet())
+//                {
+//                    if(entrySet.getValue().equals(value))
+//                    {
+//
+//                    }
+//                }
+//            }
+
+
+
+
 
         // TODO - implement this method
-        return null;
+        return jobValue;
     }
 
     /**

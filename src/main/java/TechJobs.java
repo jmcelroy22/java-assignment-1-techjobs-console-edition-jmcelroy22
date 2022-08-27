@@ -122,19 +122,18 @@ public class TechJobs {
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
         for (HashMap<String, String> newJob : someJobs) {
+            System.out.println("");
+            System.out.println("*****");
 
-            System.out.println("****");
-            for (HashMap.Entry<String, String> firstHP : newJob.entrySet()) {
-                System.out.println(firstHP.getKey() + ":" + firstHP.getValue());
+            for (HashMap.Entry<String, String> firstJobs : newJob.entrySet()) {
+                System.out.println(firstJobs.getKey() + ": " + firstJobs.getValue());
             }
-                System.out.println("****\n");
+                System.out.println("*****");
 
-
-//            newPosition = input.nextLine();
-//            newPosition.add("position type: ", "Data Scientist / Business Intelligence");
-            //System.out.println(newJob);
+;
 
         }
+       // System.out.println("");
 
 
     }
