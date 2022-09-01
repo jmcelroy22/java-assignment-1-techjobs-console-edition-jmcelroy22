@@ -21,6 +21,7 @@ public class TechJobsTest {
     // this needs to be done before every test so we don't contaminate test output
     @Before
     public void setUpOutputStream() {
+       // System.setProperty("line.separator","\n");
         baos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(baos));
     }
@@ -65,8 +66,9 @@ public class TechJobsTest {
     public void testCaseInsensitiveSearch() throws IOException {
         String input = "0\n3\nnew YORk\nx";
         String output = runProgramWithInput(input);
+
         String expected = getFileContents("src/test/resources/testCaseInsensitiveSearch.txt");
-        assertEquals(expected, output);
+        assertEquals(expected.replaceAll("\r",""),output.replaceAll("\r",""));
     }
 
 

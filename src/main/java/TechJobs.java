@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+
 import java.util.Scanner;
 
 /**
@@ -28,7 +28,7 @@ public class TechJobs {
         System.out.println("Welcome to LaunchCode's TechJobs App!");
 
         // Allow the user to search until they manually quit
-        while (true) {
+        while (true) { //while what is true?
 
             String actionChoice = getUserSelection("View jobs by (type 'x' to quit):", actionChoices);
 
@@ -36,9 +36,11 @@ public class TechJobs {
                 break;
             } else if (actionChoice.equals("list")) {
 
-                String columnChoice = getUserSelection("List", columnChoices);
+                String columnChoice = getUserSelection("List", columnChoices
+                );
 
                 if (columnChoice.equals("all")) {
+                    //what's happening from here down?
                     printJobs(JobData.findAll());
                 } else {
 
@@ -71,13 +73,14 @@ public class TechJobs {
     }
 
     // ﻿Returns the key of the selected item from the choices Dictionary
+                                                    //parameters? what is this doing?
     private static String getUserSelection(String menuHeader, HashMap<String, String> choices) {
 
         int choiceIdx = -1;
         Boolean validChoice = false;
         String[] choiceKeys = new String[choices.size()];
 
-        // Put the choices in an ordered structure so we can
+        // Put the choices in an ordered structure, so we can
         // associate an integer with each one
         int i = 0;
         for (String choiceKey : choices.keySet()) {
@@ -120,6 +123,10 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+        if (someJobs.size() == 0){
+            System.out.println("No Results");
+            return;
+        }
 
         for (HashMap<String, String> newJob : someJobs) {
             System.out.println("");
