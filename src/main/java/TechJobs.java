@@ -46,7 +46,7 @@ public class TechJobs {
 
                     ArrayList<String> results = JobData.findAll(columnChoice);
 
-                    System.out.println("\n*** All " + columnChoices.get(columnChoice) + " Values ***");
+                    System.out.println("*** All " + columnChoices.get(columnChoice) + " Values ***");
 
                     // Print list of skills, employers, etc
                     for (String item : results) {
@@ -123,12 +123,15 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
-        if (someJobs.size() == 0){
-            System.out.println("No Results");
+        if (someJobs.size() == 0) {
+            System.out.print("No Results");
             return;
         }
 
+
         for (HashMap<String, String> newJob : someJobs) {
+//            String jobStars = "\n****\n";
+//            jobStars += "****";
             System.out.println("");
             System.out.println("*****");
 
@@ -137,7 +140,7 @@ public class TechJobs {
             }
                 System.out.println("*****");
 
-;
+
 
         }
        // System.out.println("");
